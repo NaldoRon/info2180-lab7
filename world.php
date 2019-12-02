@@ -1,13 +1,16 @@
 <?php
 $myCountry = $_GET['country'];
 $host = getenv('IP');
-$username = 'lab7_user';
+$username = 'root';
 $password = '';
 $dbname = 'world';
 
 $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
 $stmt = $conn->query("SELECT * FROM countries");
-
+exec($stmt);
+$query = file_get_contents("world.sql");
+$stmt = $dbname->prepare($query);
+exec($stmnt)
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
